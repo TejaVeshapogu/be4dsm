@@ -1,56 +1,36 @@
-// ================================
-// Smooth Scroll Navigation
-// ================================
+// --- Hamburger Toggle Logic ---
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('nav-menu');
 
-document.querySelectorAll("nav a").forEach(link => {
-    link.addEventListener("click", function (e) {
+// Open/Close menu when clicking the lines
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navMenu.classList.toggle('active');
+});
+
+// Close menu when a link is clicked (so you can see the content)
+document.querySelectorAll('#nav-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navMenu.classList.remove('active');
+    });
+});
+
+// --- Smooth Scroll Navigation ---
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
         e.preventDefault();
-
-        const targetId = this.getAttribute("href");
-        const targetSection = document.querySelector(targetId);
-
-        if (targetSection) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
             window.scrollTo({
-                top: targetSection.offsetTop - 60,
-                behavior: "smooth"
+                top: target.offsetTop - 60,
+                behavior: 'smooth'
             });
         }
     });
 });
 
-
-// ================================
-// Active Navigation Highlight
-// ================================
-
-const sections = document.querySelectorAll("section");
-const navLinks = document.querySelectorAll("nav a");
-
-window.addEventListener("scroll", () => {
-    let currentSection = "";
-
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop - 80;
-        const sectionHeight = section.clientHeight;
-
-        if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
-            currentSection = section.getAttribute("id");
-        }
-    });
-
-    navLinks.forEach(link => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === "#" + currentSection) {
-            link.classList.add("active");
-        }
-    });
-});
-
-
-// ================================
-// Fade-In Animation on Scroll
-// ================================
-
+// --- Fade-In Animation on Scroll ---
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -58,9 +38,7 @@ const observer = new IntersectionObserver(entries => {
             entry.target.style.transform = "translateY(0)";
         }
     });
-}, {
-    threshold: 0.15
-});
+}, { threshold: 0.15 });
 
 document.querySelectorAll(".section").forEach(section => {
     section.style.opacity = "0";
