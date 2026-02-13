@@ -49,12 +49,15 @@ header p {
 }
 
 /* ================================
-   Navigation
+   Navigation & Dropdown
 ================================ */
 
 nav {
     background-color: #ffffff;
     box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    position: sticky; /* Keeps menu visible while scrolling */
+    top: 0;
+    z-index: 1000;
 }
 
 nav ul {
@@ -65,8 +68,10 @@ nav ul {
 
 nav ul li {
     margin: 0 18px;
+    position: relative; /* Necessary for dropdown positioning */
 }
 
+/* Main Nav Links */
 nav ul li a {
     display: block;
     padding: 16px 0;
@@ -76,19 +81,53 @@ nav ul li a {
     transition: 0.3s ease;
 }
 
+/* Hover effect for the main visible button */
 nav ul li a:hover {
     color: #7d2477;
     font-size: 20px;
 }
 
-nav ul li a.active {
-    color: #7d2477;
-    border-bottom: 2px solid #7d2477;
+/* --- Dropdown Specific Styles --- */
+
+.dropdown-content {
+    display: none; /* Hidden by default */
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.1);
+    z-index: 1000;
+    border-top: 3px solid #7d2477;
+    left: 50%;
+    transform: translateX(-50%); /* Centers the dropdown under the button */
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: #1f2d3d;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    font-size: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Special hover for dropdown items (prevents the 20px jump) */
+.dropdown-content a:hover {
+    background-color: #f9fbfd;
+    color: #7d2477 !important;
+    font-size: 15px !important; 
+    padding-left: 20px; /* Slight shift to the right on hover */
+}
+
+/* Show the dropdown when hovering over the parent LI */
+.dropdown:hover .dropdown-content {
+    display: block;
 }
 
 /* ================================
    Sections
-================================ */
+=============================== */
 
 .section {
     padding: 70px 0;
@@ -153,7 +192,6 @@ footer {
 ================================ */
 
 @media (max-width: 768px) {
-
     nav ul {
         flex-direction: column;
         align-items: center;
@@ -161,6 +199,17 @@ footer {
 
     nav ul li {
         margin: 8px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Stack dropdown items on mobile */
+    .dropdown-content {
+        position: static;
+        transform: none;
+        box-shadow: none;
+        border: none;
+        display: block; /* Always show them on mobile for easier navigation */
     }
 
     header h1 {
