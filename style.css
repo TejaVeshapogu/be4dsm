@@ -1,0 +1,177 @@
+/* ================================
+   Global Reset
+================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f5f7fa;
+    color: #222;
+}
+
+/* ================================
+   Container
+================================ */
+
+.container {
+    width: 85%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* ================================
+   Header
+================================ */
+
+header {
+    background-color: #7d2477;
+    color: #ffffff;
+    padding: 50px 0;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 14px;
+    margin: 4px 0;
+    opacity: 0.9;
+}
+
+/* ================================
+   Navigation
+================================ */
+
+nav {
+    background-color: #ffffff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0 18px;
+}
+
+nav ul li a {
+    display: block;
+    padding: 16px 0;
+    text-decoration: none;
+    color: #1f2d3d;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #7d2477;
+    font-size: 20px;
+}
+
+nav ul li a.active {
+    color: #7d2477;
+    border-bottom: 2px solid #7d2477;
+}
+
+/* ================================
+   Sections
+================================ */
+
+.section {
+    padding: 70px 0;
+    background-color: #ffffff;
+    margin-bottom: 15px;
+}
+
+.section:nth-child(even) {
+    background-color: #f9fbfd;
+}
+
+.section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    border-left: 4px solid #cc0031;
+    padding-left: 10px;
+    color: #0e4a37;
+}
+
+.section p {
+    font-size: 15px;
+    text-align: justify;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+/* ================================
+   Image Grid
+================================ */
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.image-grid img {
+    width: 100%;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+}
+
+.image-grid img:hover {
+    transform: scale(1.03);
+}
+
+/* ================================
+   Footer
+================================ */
+
+footer {
+    background-color: #7d2477;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 13px;
+}
+
+/* ================================
+   Responsive Design
+================================ */
+
+@media (max-width: 768px) {
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 8px 0;
+    }
+
+    header h1 {
+        font-size: 22px;
+    }
+
+    .section h2 {
+        font-size: 20px;
+    }
+
+    .container {
+        width: 92%;
+    }
+}
